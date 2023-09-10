@@ -17,7 +17,7 @@ export default function SignIn() {
       [e.target.id]: e.target.value,
     }));
   }
-
+  function OnSubmit() {}
   return (
     <section>
       <h1 className="text-3xl text-center mt-6 font-bold">SignIn</h1>
@@ -30,7 +30,7 @@ export default function SignIn() {
           />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form>
+          <form onSubmit={OnSubmit}>
             <input
               className="w-full px-4 py-2 text-xl text-gray-700 mb-6"
               type="email"
