@@ -7,7 +7,6 @@ import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 export default function OAuth() {
-  const navigate = useNavigate();
   async function onGoogleClick() {
     try {
       const auth = getAuth();
@@ -25,7 +24,6 @@ export default function OAuth() {
           timestamp: serverTimestamp(),
         });
       }
-      navigate("/");
     } catch (error) {
       toast.error("sorry");
     }
