@@ -17,8 +17,10 @@ export default function ForgotPassword() {
       const auth = getAuth();
       await sendPasswordResetEmail(auth, email);
       toast.success("email was sent");
+      console.log(toast);
     } catch (error) {
       toast.error("I'm sorry");
+      console.log(error);
     }
   }
   return (

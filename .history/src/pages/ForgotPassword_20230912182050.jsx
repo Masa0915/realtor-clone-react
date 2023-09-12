@@ -19,6 +19,7 @@ export default function ForgotPassword() {
       toast.success("email was sent");
     } catch (error) {
       toast.error("I'm sorry");
+      console.log(error);
     }
   }
   return (
