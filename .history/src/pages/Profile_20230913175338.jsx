@@ -36,7 +36,6 @@ export default function Profile() {
           name,
         });
       }
-      toast.success("profile edit success");
     } catch (error) {
       toast.error("NO edit");
     }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { doc, updateDoc } from "firebase/firestore";
+import { updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 export default function Profile() {
@@ -36,7 +36,6 @@ export default function Profile() {
           name,
         });
       }
-      toast.success("profile edit success");
     } catch (error) {
       toast.error("NO edit");
     }

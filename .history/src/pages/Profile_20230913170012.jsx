@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { getAuth, updateProfile } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../firebase";
 
 export default function Profile() {
   const auth = getAuth();
@@ -24,23 +21,6 @@ export default function Profile() {
       [e.target.id]: e.target.value,
     }));
   }
-
-  async function onSubmit() {
-    try {
-      if (auth.currentUser.displayName !== name) {
-        await updateProfile(auth.currentUser, {
-          displayName: name,
-        });
-        const docRef = doc(db, "users", auth.currentUser.uid);
-        await updateDoc(docRef, {
-          name,
-        });
-      }
-      toast.success("profile edit success");
-    } catch (error) {
-      toast.error("NO edit");
-    }
-  }
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
@@ -51,17 +31,15 @@ export default function Profile() {
               type="text"
               id="name"
               value={name}
-              disabled={!changeDetail}
-              onChange={onChange}
-              className={`mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out ${
-                changeDetail && "bg-red-200 focus:bg-200"
-              }`}
+              disabled
+              className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out"
             />
             <input
               type="email"
               id="email"
               value={email}
-              disabled
+              disabled={!changeDetail}
+              onChange={onChange}
               className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out"
             />
 
@@ -70,10 +48,7 @@ export default function Profile() {
                 Do you want to change your name?
                 <span
                   className="text-red-600 hover:text-red-700 cursor-pointer"
-                  onClick={() => {
-                    changeDetail && onSubmit();
-                    setChangeDetail((prevState) => !prevState);
-                  }}
+                  onClick={() => setChangeDetail((prevState) => !prevState)}
                 >
                   {changeDetail ? "apply change" : "edit"}
                 </span>

@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { getAuth, updateProfile } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../firebase";
 
 export default function Profile() {
   const auth = getAuth();
@@ -25,22 +22,7 @@ export default function Profile() {
     }));
   }
 
-  async function onSubmit() {
-    try {
-      if (auth.currentUser.displayName !== name) {
-        await updateProfile(auth.currentUser, {
-          displayName: name,
-        });
-        const docRef = doc(db, "users", auth.currentUser.uid);
-        await updateDoc(docRef, {
-          name,
-        });
-      }
-      toast.success("profile edit success");
-    } catch (error) {
-      toast.error("NO edit");
-    }
-  }
+  function onSubmit() {}
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
