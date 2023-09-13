@@ -11,7 +11,7 @@ export default function Header() {
       if (user) {
         setPageState("Profile");
       } else {
-        setPageState("Sign in");
+        setPageState("Sign In");
       }
     });
   }, [auth]);

@@ -9,7 +9,7 @@ export default function Header() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setPageState("Profile");
+        setPageState("Profileeee");
       } else {
         setPageState("Sign in");
       }
