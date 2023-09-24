@@ -70,7 +70,7 @@ export default function CreateListing() {
           <button
             type="button"
             id="type"
-            value="rent"
+            value="sale"
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg duration-150 ease-in-out w-full ${
               type === "sale"
@@ -160,9 +160,9 @@ export default function CreateListing() {
             yes
           </button>
           <button
-            type="button"
-            id="furnished"
-            value={false}
+            type="furnish"
+            id="type"
+            value="sale"
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg duration-150 ease-in-out w-full ${
               furnished ? "bg-white text-black" : "bg-slate-600 text-white"

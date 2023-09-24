@@ -36,16 +36,7 @@ export default function CreateListing() {
       boolean = false;
     }
     if (e.target.files) {
-      setFormData((prevstate) => ({
-        ...prevstate,
-        images: e.target.files,
-      }));
-    }
-    if (!e.target.files) {
-      setFormData((prevState) => ({
-        ...prevState,
-        [e.target.id]: boolean ?? e.target.value,
-      }));
+      setFormData((prevState) => ({}));
     }
   }
   return (
@@ -70,7 +61,7 @@ export default function CreateListing() {
           <button
             type="button"
             id="type"
-            value="rent"
+            value="sale"
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg duration-150 ease-in-out w-full ${
               type === "sale"
@@ -78,7 +69,7 @@ export default function CreateListing() {
                 : "bg-slate-600 text-white"
             }`}
           >
-            rent
+            sell
           </button>
         </div>
         <p className="text-lg mt-6 font-semibold">Name</p>
@@ -140,7 +131,9 @@ export default function CreateListing() {
             value={false}
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg duration-150 ease-in-out w-full ${
-              parking ? "bg-white text-black" : "bg-slate-600 text-white"
+              type === "sale"
+                ? "bg-white text-black"
+                : "bg-slate-600 text-white"
             }`}
           >
             no
@@ -160,9 +153,9 @@ export default function CreateListing() {
             yes
           </button>
           <button
-            type="button"
-            id="furnished"
-            value={false}
+            type="furnish"
+            id="type"
+            value="sale"
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg duration-150 ease-in-out w-full ${
               furnished ? "bg-white text-black" : "bg-slate-600 text-white"

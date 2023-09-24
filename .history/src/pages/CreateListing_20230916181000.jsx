@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export default function CreateListing() {
+  const [geolocationEnabled, setGeolocationEnabled] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
     name: "",
@@ -13,6 +14,8 @@ export default function CreateListing() {
     offer: false,
     regularPrice: 0,
     discountedPrice: 0,
+    latitude: 0,
+    longitude: 0,
   });
   const {
     type,
@@ -26,6 +29,8 @@ export default function CreateListing() {
     offer,
     regularPrice,
     discountedPrice,
+    latitude,
+    longitude,
   } = formData;
   function onChange(e) {
     let boolean = null;
@@ -36,8 +41,8 @@ export default function CreateListing() {
       boolean = false;
     }
     if (e.target.files) {
-      setFormData((prevstate) => ({
-        ...prevstate,
+      setFormData((prevState) => ({
+        ...prevState,
         images: e.target.files,
       }));
     }
@@ -78,7 +83,7 @@ export default function CreateListing() {
                 : "bg-slate-600 text-white"
             }`}
           >
-            rent
+            sell
           </button>
         </div>
         <p className="text-lg mt-6 font-semibold">Name</p>
@@ -181,6 +186,34 @@ export default function CreateListing() {
           required
           className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600"
         />
+        {!geolocationEnabled && (
+          <div className="flex space-x-6 justify-start">
+            <div>
+              <p className="text-lg font-semibold">Latitude</p>
+              <input
+                type="number"
+                id="latitude"
+                value={latitude}
+                onChange={onChange}
+                required
+                min="-90"
+                max="90"
+                className="w-full px-4 y-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:bg-white focus:text-gray-700 focus:border-slate-600 text-center"
+              />
+            </div>
+            <div>
+              <p className="text-lg font-semibold">Longitude</p>
+              <input
+                type="number"
+                id="longitude"
+                value={longitude}
+                onChange={onChange}
+                required
+                className="w-full px-4 y-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:bg-white focus:text-gray-700 focus:border-slate-600 text-center"
+              />
+            </div>
+          </div>
+        )}
         <p className="text-lg font-semibold">Description</p>
         <textarea
           type="text"

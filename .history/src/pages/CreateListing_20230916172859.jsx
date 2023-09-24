@@ -35,18 +35,18 @@ export default function CreateListing() {
     if (e.target.value === "false") {
       boolean = false;
     }
-    if (e.target.files) {
-      setFormData((prevstate) => ({
-        ...prevstate,
-        images: e.target.files,
-      }));
-    }
-    if (!e.target.files) {
-      setFormData((prevState) => ({
-        ...prevState,
-        [e.target.id]: boolean ?? e.target.value,
-      }));
-    }
+    // if (e.target.files) {
+    //   setFormData((prevState) => ({
+    //     ...prevState,
+    //     images: e.target.files,
+    //   }));
+    // }
+    // if (!e.target.files) {
+    //   setFormData((prevState) => ({
+    //     ...prevState,
+    //     [e.target.id]: boolean ?? e.target.value,
+    //   }));
+    // }
   }
   return (
     <main className="max-w-md px-2 mx-auto">
@@ -78,7 +78,7 @@ export default function CreateListing() {
                 : "bg-slate-600 text-white"
             }`}
           >
-            rent
+            sell
           </button>
         </div>
         <p className="text-lg mt-6 font-semibold">Name</p>

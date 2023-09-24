@@ -36,8 +36,8 @@ export default function CreateListing() {
       boolean = false;
     }
     if (e.target.files) {
-      setFormData((prevstate) => ({
-        ...prevstate,
+      setFormData((prevState) => ({
+        ...prevState,
         images: e.target.files,
       }));
     }
@@ -78,7 +78,7 @@ export default function CreateListing() {
                 : "bg-slate-600 text-white"
             }`}
           >
-            rent
+            sell
           </button>
         </div>
         <p className="text-lg mt-6 font-semibold">Name</p>
@@ -140,7 +140,9 @@ export default function CreateListing() {
             value={false}
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg duration-150 ease-in-out w-full ${
-              parking ? "bg-white text-black" : "bg-slate-600 text-white"
+              type === "sale"
+                ? "bg-white text-black"
+                : "bg-slate-600 text-white"
             }`}
           >
             no
@@ -162,7 +164,7 @@ export default function CreateListing() {
           <button
             type="button"
             id="furnished"
-            value={false}
+            value={true}
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg duration-150 ease-in-out w-full ${
               furnished ? "bg-white text-black" : "bg-slate-600 text-white"

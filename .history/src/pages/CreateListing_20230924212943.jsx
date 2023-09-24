@@ -160,7 +160,7 @@ export default function CreateListing() {
             yes
           </button>
           <button
-            type="button"
+            type="furnish"
             id="furnished"
             value={false}
             onClick={onChange}
