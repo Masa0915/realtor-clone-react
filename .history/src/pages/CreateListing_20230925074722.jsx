@@ -69,11 +69,6 @@ export default function CreateListing() {
     if (images.length > 6) {
       setLoading(false);
       toast.error("やりすぎ");
-      return;
-    }
-    let geolocation = {};
-    let location;
-    if (geolocationEnabled) {
     }
   }
   if (loading) {

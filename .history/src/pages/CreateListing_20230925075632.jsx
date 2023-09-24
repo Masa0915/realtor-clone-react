@@ -71,10 +71,6 @@ export default function CreateListing() {
       toast.error("やりすぎ");
       return;
     }
-    let geolocation = {};
-    let location;
-    if (geolocationEnabled) {
-    }
   }
   if (loading) {
     return <Spinner />;

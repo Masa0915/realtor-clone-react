@@ -35,7 +35,6 @@ export default function CreateListing() {
     discountedPrice,
     latitude,
     longitude,
-    images,
   } = formData;
   function onChange(e) {
     let boolean = null;
@@ -67,13 +66,6 @@ export default function CreateListing() {
       return;
     }
     if (images.length > 6) {
-      setLoading(false);
-      toast.error("やりすぎ");
-      return;
-    }
-    let geolocation = {};
-    let location;
-    if (geolocationEnabled) {
     }
   }
   if (loading) {

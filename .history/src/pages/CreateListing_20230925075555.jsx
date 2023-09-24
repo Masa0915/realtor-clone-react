@@ -61,6 +61,7 @@ export default function CreateListing() {
   function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
+    console.log(loading);
     if (discountedPrice >= regularPrice) {
       setLoading(false);
       toast.error("less");
@@ -71,10 +72,7 @@ export default function CreateListing() {
       toast.error("やりすぎ");
       return;
     }
-    let geolocation = {};
-    let location;
-    if (geolocationEnabled) {
-    }
+    console.log(loading);
   }
   if (loading) {
     return <Spinner />;
