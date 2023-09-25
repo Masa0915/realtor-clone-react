@@ -14,6 +14,7 @@ import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateListing() {
+  console.log();
   const navigate = useNavigate();
   const auth = getAuth();
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
@@ -74,7 +75,9 @@ export default function CreateListing() {
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    if (Number(discountedPrice) >= Number(regularPrice)) {
+    console.log(typeof discountedPrice);
+    console.log(typeof regularPrice);
+    if (discountedPrice >= regularPrice) {
       setLoading(false);
       toast.error("less");
       return;

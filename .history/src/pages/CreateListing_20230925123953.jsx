@@ -11,7 +11,7 @@ import { getAuth } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid";
 import { serverTimestamp, addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export default function CreateListing() {
   const navigate = useNavigate();
@@ -74,7 +74,7 @@ export default function CreateListing() {
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    if (Number(discountedPrice) >= Number(regularPrice)) {
+    if (discountedPrice >= regularPrice) {
       setLoading(false);
       toast.error("less");
       return;
@@ -161,7 +161,7 @@ export default function CreateListing() {
     const docRef = await addDoc(collection(db, "listings"), formDataCopy);
     setLoading(false);
     toast.success("Listing created");
-    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
+    navigate;
   }
 
   if (loading) {

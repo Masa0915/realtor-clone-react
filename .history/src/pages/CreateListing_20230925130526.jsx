@@ -74,6 +74,8 @@ export default function CreateListing() {
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
+    console.log(typeof discountedPrice);
+    console.log(typeof regularPrice);
     if (Number(discountedPrice) >= Number(regularPrice)) {
       setLoading(false);
       toast.error("less");
