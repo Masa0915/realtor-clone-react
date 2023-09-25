@@ -74,8 +74,8 @@ export default function CreateListing() {
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    console.log(typeof discountedPrice);
-    console.log(typeof regularPrice);
+    console.log(discountedPrice);
+    console.log(regularPrice);
     if (Number(discountedPrice) >= Number(regularPrice)) {
       setLoading(false);
       toast.error("less");
@@ -154,8 +154,7 @@ export default function CreateListing() {
       ...formData,
       imgUrls,
       geolocation,
-      timestamp: serverTimestamp(),
-      userRef: auth.currentUser.uid,
+      timestanp: serverTimestamp(),
     };
     delete formDataCopy.images;
     !formDataCopy.offer && delete formDataCopy.discountedPrice;

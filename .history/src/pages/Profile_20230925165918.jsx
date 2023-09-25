@@ -56,7 +56,6 @@ export default function Profile() {
   useEffect(() => {
     async function fetchUserListings() {
       const listingRef = collection(db, "listings");
-      console.log(auth.currentUser.uid);
       const q = query(
         listingRef,
         where("userRef", "==", auth.currentUser.uid),
@@ -72,11 +71,12 @@ export default function Profile() {
       });
       setListings(listings);
       setLoading(false);
-      console.log(listings.length);
+      console.log(listings);
     }
     fetchUserListings();
   }, [auth.currentUser.uid]);
 
+  console.log(listings);
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
@@ -139,10 +139,8 @@ export default function Profile() {
       <div className="max-w-6xl px-3 mt-6 mx-auto">
         {!loading && listings.length > 0 && (
           <>
-            <h2 className="text-2xl text-center font-semibold mb-6">
-              My Listings
-            </h2>
-            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl-grid-cols-5 mt-6 mb-6">
+            <h2 className="text-2xl text-center font-semibold">My Listings</h2>
+            <ul>
               {listings.map((listing) => (
                 <ListingItem
                   key={listing.id}
