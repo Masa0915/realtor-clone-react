@@ -7,14 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Navigation, Pagination } from "swiper/modules";
 import SwiperCore from "swiper/core";
 import "swiper/css/bundle";
-import {
-  FaShare,
-  FaMapMarkerAlt,
-  FaBed,
-  FaBath,
-  FaParking,
-  FaChair,
-} from "react-icons/fa";
+import { FaShare, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Listing() {
   console.log(Autoplay);
@@ -99,33 +92,11 @@ export default function Listing() {
               {listing.type === "rent" ? "Rent" : "Sale"}
             </p>
             {listing.offer && (
-              <p className="w-full max-w-[200px] bg-green-800 rounded-md p-1 text-white text-center font-semibold shadow-md">
+              <p className="w-full max-w-[200px] bg-green-800 ">
                 ${listing.regularPrice - listing.discountedPrice} discount
               </p>
             )}
           </div>
-          <p className="mt-3 mb-3">
-            <span className="font-semibold">Description - </span>
-            {listing.description}
-          </p>
-          <ul className="flex items-center space-x-2 sm:space-x-10 text-sm font-semibold">
-            <li className="flex items-center whitespace-nowrap">
-              <FaBed />
-              {listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : "1 Bed"}
-            </li>
-            <li className="flex items-center whitespace-nowrap">
-              <FaBath />
-              {listing.bathrooms > 1 ? `${listing.bathrooms} Baths` : "1 Bath"}
-            </li>
-            <li className="flex items-center whitespace-nowrap">
-              <FaParking />
-              {listing.parking ? "Parking Spot" : "No Parking"}
-            </li>
-            <li className="flex items-center whitespace-nowrap">
-              <FaChair />
-              {listing.furnished > 1 ? "Furnished" : "Not furnished"}
-            </li>
-          </ul>
         </div>
         <div className="bg-blue-300 w-full h-[200px] lg-[400px]"></div>
       </div>

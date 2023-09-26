@@ -123,7 +123,7 @@ export default function Listing() {
             </li>
             <li className="flex items-center whitespace-nowrap">
               <FaChair />
-              {listing.furnished > 1 ? "Furnished" : "Not furnished"}
+              {listing.bathrooms > 1 ? `${listing.bathrooms} Baths` : "1 Bath"}
             </li>
           </ul>
         </div>

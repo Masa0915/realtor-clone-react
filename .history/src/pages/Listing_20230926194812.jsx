@@ -7,14 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Navigation, Pagination } from "swiper/modules";
 import SwiperCore from "swiper/core";
 import "swiper/css/bundle";
-import {
-  FaShare,
-  FaMapMarkerAlt,
-  FaBed,
-  FaBath,
-  FaParking,
-  FaChair,
-} from "react-icons/fa";
+import { FaShare, FaMapMarkerAlt, FaBed, FaBath } from "react-icons/fa";
 
 export default function Listing() {
   console.log(Autoplay);
@@ -116,14 +109,6 @@ export default function Listing() {
             <li className="flex items-center whitespace-nowrap">
               <FaBath />
               {listing.bathrooms > 1 ? `${listing.bathrooms} Baths` : "1 Bath"}
-            </li>
-            <li className="flex items-center whitespace-nowrap">
-              <FaParking />
-              {listing.parking ? "Parking Spot" : "No Parking"}
-            </li>
-            <li className="flex items-center whitespace-nowrap">
-              <FaChair />
-              {listing.furnished > 1 ? "Furnished" : "Not furnished"}
             </li>
           </ul>
         </div>
