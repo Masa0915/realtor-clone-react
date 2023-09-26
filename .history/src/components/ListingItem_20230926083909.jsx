@@ -63,12 +63,6 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
           onClick={() => onDelete(listing.id)}
         />
       )}
-      {onEdit && (
-        <MdEdit
-          className="absolute bottom-2 right-7 h-4 cursor-pointer"
-          onClick={() => onEdit(listing.id)}
-        />
-      )}
     </li>
   );
 }

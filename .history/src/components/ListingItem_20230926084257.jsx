@@ -65,7 +65,7 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
       )}
       {onEdit && (
         <MdEdit
-          className="absolute bottom-2 right-7 h-4 cursor-pointer"
+          className="absolute bottom-2 right-7 h-[14px] cursor-pointer text-red-500"
           onClick={() => onEdit(listing.id)}
         />
       )}
