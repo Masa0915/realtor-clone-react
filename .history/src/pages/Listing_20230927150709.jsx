@@ -35,6 +35,7 @@ export default function Listing() {
       if (docSnap.exists()) {
         setListing(docSnap.data());
         setLoading(false);
+        console.log(listing);
       }
     }
     fetchListing();
@@ -42,7 +43,7 @@ export default function Listing() {
   if (loading) {
     return <Spinner />;
   }
-  console.log(listing.geolocation.lng);
+  console.log(listing.geolocation.lat);
   return (
     <main>
       <Swiper
@@ -147,7 +148,7 @@ export default function Listing() {
             <Contact userRef={listing.userRef} listing={listing} />
           )}
         </div>
-        <div className=" w-full h-[200px] md:h-[400px] z-10 overflow-x-hidden mt-6">
+        <div className=" w-full h-[200px] lg-[400px] ">
           <MapContainer
             center={[listing.geolocation.lat, listing.geolocation.lng]}
             zoom={13}
@@ -159,7 +160,7 @@ export default function Listing() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker
-              position={[listing.geolocation.lat, listing.geolocation.lng]}
+              position={[listing.geolocation.lat, listing.geolocationlng]}
             >
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.

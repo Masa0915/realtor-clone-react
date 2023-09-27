@@ -147,7 +147,7 @@ export default function Listing() {
             <Contact userRef={listing.userRef} listing={listing} />
           )}
         </div>
-        <div className=" w-full h-[200px] md:h-[400px] z-10 overflow-x-hidden mt-6">
+        <div className=" w-full h-[200px] lg-[400px] ">
           <MapContainer
             center={[listing.geolocation.lat, listing.geolocation.lng]}
             zoom={13}
@@ -159,7 +159,7 @@ export default function Listing() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker
-              position={[listing.geolocation.lat, listing.geolocation.lng]}
+              position={[listing.geolocation.lat, listing.geolocationlng.lng]}
             >
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
