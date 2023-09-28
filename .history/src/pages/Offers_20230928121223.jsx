@@ -4,7 +4,6 @@ import {
   limit,
   orderBy,
   query,
-  startAfter,
   where,
 } from "firebase/firestore";
 import React from "react";
@@ -18,7 +17,6 @@ import ListingItem from "../components/ListingItem";
 export default function Offers() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [lastFetchedListings, setLastFetchedListings] = useState(null);
   useEffect(() => {
     async function fetchListings() {
       try {
@@ -30,8 +28,6 @@ export default function Offers() {
           limit(8)
         );
         const querySnap = await getDocs(q);
-        const lastVisible = querySnap.docs[querySnap.docs.length - 1];
-        setLastFetchedListings(lastVisible);
         const listings = [];
         querySnap.forEach((doc) => {
           return listings.push({
@@ -47,33 +43,6 @@ export default function Offers() {
     }
     fetchListings();
   }, []);
-
-  async function onFetchMoreListings() {
-    try {
-      const listingRef = collection(db, "listings");
-      const q = query(
-        listingRef,
-        where("offer", "==", true),
-        orderBy("timestamp", "desc"),
-        startAfter(lastFetchedListings),
-        limit(4)
-      );
-      const querySnap = await getDocs(q);
-      const lastVisible = querySnap.docs[querySnap.docs.length - 1];
-      setLastFetchedListings(lastVisible);
-      const listings = [];
-      querySnap.forEach((doc) => {
-        return listings.push({
-          id: doc.id,
-          data: doc.data(),
-        });
-      });
-      setListings((prevState) => [...prevState, ...listings]);
-      setLoading(false);
-    } catch (error) {
-      toast.error("Could not fetch Listings");
-    }
-  }
   return (
     <div className="max-w-6xl mx-auto px-3 ">
       <h1 className="text-3xl text-center mt-6 font-bold mb-6">Offers</h1>
@@ -92,16 +61,6 @@ export default function Offers() {
               ))}
             </ul>
           </main>
-          {lastFetchedListings && (
-            <div className="flex justify-center items-center">
-              <button
-                onClick={onFetchMoreListings}
-                className="bg-white px-3 py-1.5 text-gray-700 border border-gray-300 mb-6 mt-6 hover:border-slate-600 rounded transition duration-150 ease-in-out"
-              >
-                Load more
-              </button>
-            </div>
-          )}
         </>
       ) : (
         <p>There are no current offer</p>
